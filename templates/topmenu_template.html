@@ -22,16 +22,11 @@
             display: block;
         }
         .dropdown-menu {
-            left: 0 !important;
-            right: auto !important;
+            left: 0 !important; /* Forzar alineación izquierda */
+            right: auto !important; /* Forzar alineación izquierda */
         }
         .navbar-nav .dropdown:hover>.dropdown-menu {
             display: block;
-        }
-        /* Para asegurar que los submenús estén alineados a la izquierda */
-        .dropdown-menu[data-bs-popper] {
-            left: 0 !important;
-            right: auto !important;
         }
     </style>
 </head>
@@ -42,9 +37,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" aria-haspopup="true" aria-expanded="false">
                     Menú 1
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu1">
@@ -54,7 +49,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" aria-haspopup="true" aria-expanded="false">
                     Menú 2
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu2">
@@ -64,7 +59,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu3" role="button" aria-haspopup="true" aria-expanded="false">
                     Menú 3
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu3">
@@ -73,6 +68,8 @@
                     <a class="dropdown-item" href="#">Opción 3-3</a>
                 </div>
             </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
             {% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('main_routes.welcome') }}">Bienvenido, {{ current_user.username }}</a>
@@ -85,7 +82,7 @@
                     <a class="nav-link" href="{{ url_for('auth_routes.register') }}">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth_routes.login') }}">Iniciar Sesióm</a>
+                    <a class="nav-link" href="{{ url_for('auth_routes.login') }}">Iniciar Sesión</a>
                 </li>
             {% endif %}
         </ul>
