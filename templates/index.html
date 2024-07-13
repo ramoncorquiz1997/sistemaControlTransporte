@@ -1,17 +1,71 @@
 {% extends "topmenu_template.html" %}
 
-{% block title %}Inicio - Sistema de Control de Transporte{% endblock %}
+{% block title %}Inicio - OptiFlota{% endblock %}
 
 {% block content %}
-<div class="text-center">
-    <h1>Bienvenido al Sistema de Control de Transporte</h1>
-    <p>
-        Nuestra plataforma ofrece soluciones eficientes para la gestión y operación del transporte público. 
-        Desde el registro de usuarios hasta la supervisión de operaciones diarias, nuestro sistema está 
-        diseñado para mejorar la eficiencia y calidad del servicio. Regístrese o inicie sesión para acceder 
-        a nuestras herramientas avanzadas y descubrir cómo podemos ayudar a optimizar su flota de transporte.
-    </p>
-    <a href="{{ url_for('auth_routes.register') }}" class="btn btn-primary btn-custom">Registro</a>
-    <a href="{{ url_for('auth_routes.login') }}" class="btn btn-secondary btn-custom">Iniciar Sesión</a>
+<div class="container text-center mt-5">
+    <!-- Banner de Bienvenida -->
+    <div class="jumbotron rounded">
+        <h1 class="display-4">Bienvenido a OptiFlota</h1>
+        <p class="lead">Soluciones eficientes para la gestión y operación del transporte público.</p>
+        <hr class="my-4">
+        <p>Regístrese o inicie sesión para acceder a nuestras herramientas avanzadas.</p>
+        <a href="{{ url_for('auth_routes.register') }}" class="btn btn-primary btn-lg">Registro</a>
+        <a href="{{ url_for('auth_routes.login') }}" class="btn btn-secondary btn-lg">Iniciar Sesión</a>
+    </div>
+
+    <!-- Sección de Características -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card rounded">
+                <div class="card-body">
+                    <h2>Fácil de Usar</h2>
+                    <p>Interfaz intuitiva que facilita la gestión diaria del transporte.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card rounded">
+                <div class="card-body">
+                    <h2>Altamente Eficiente</h2>
+                    <p>Optimiza las operaciones para mejorar la eficiencia y calidad del servicio.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card rounded">
+                <div class="card-body">
+                    <h2>Seguridad y Confiabilidad</h2>
+                    <p>Plataforma segura que protege los datos de sus usuarios y operaciones.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonios de Clientes -->
+    <div class="mt-5">
+        <div class="card rounded">
+            <div class="card-body">
+                <h2>Testimonios</h2>
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0">"Esta plataforma ha transformado nuestra operación, haciéndola más eficiente y fácil de gestionar."</p>
+                    <footer class="blockquote-footer">Juan Pérez, <cite title="Source Title">Empresa de Transporte XYZ</cite></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Pie de Página -->
+<footer class="footer mt-5 py-3 bg-light rounded">
+    <div class="container text-center">
+        <span class="text-muted">© 2024 OptiFlota. Todos los derechos reservados.</span>
+        <br>
+        <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a>
+        <br>
+        <a href="#"><img src="facebook-icon.png" alt="Facebook" style="width:24px;height:24px;"></a>
+        <a href="#"><img src="twitter-icon.png" alt="Twitter" style="width:24px;height:24px;"></a>
+        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn" style="width:24px;height:24px;"></a>
+    </div>
+</footer>
 {% endblock %}

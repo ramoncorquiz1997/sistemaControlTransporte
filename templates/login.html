@@ -1,18 +1,27 @@
 {% extends "topmenu_template.html" %}
 
-{% block title %}Iniciar Sesión - Sistema de Control de Transporte{% endblock %}
+{% block title %}Login - OptiFlota{% endblock %}
 
 {% block content %}
-<h1>Iniciar Sesión</h1>
-<form method="POST" action="{{ url_for('auth_routes.login') }}">
-    <div class="form-group">
-        <label for="username">Nombre de usuario:</label>
-        <input type="text" class="form-control" id="username" name="username" required>
-    </div>
-    <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-</form>
+<div class="container mt-5">
+    <h1>Login</h1>
+    <form method="POST" action="{{ url_for('auth_routes.login') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+        </div>
+        <div class="form-group form-check">
+            {{ form.remember(class="form-check-input") }}
+            {{ form.remember.label(class="form-check-label") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
 {% endblock %}

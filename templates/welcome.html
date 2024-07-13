@@ -1,0 +1,10 @@
+{% extends "topmenu_template.html" %}
+
+{% block title %}Bienvenido{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Bienvenido a tu portal, {{ username }}!</h1>
+    <a href="{{ url_for('auth_routes.logout') }}" class="btn btn-primary">Cerrar Sesión</a>
+</div>
+{% endblock %}
