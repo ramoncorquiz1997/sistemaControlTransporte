@@ -5,6 +5,12 @@
 {% block content %}
 <div class="text-center">
     <h1>Bienvenido al Sistema de Control de Transporte</h1>
+    <p>
+        Nuestra plataforma ofrece soluciones eficientes para la gestión y operación del transporte público. 
+        Desde el registro de usuarios hasta la supervisión de operaciones diarias, nuestro sistema está 
+        diseñado para mejorar la eficiencia y calidad del servicio. Regístrese o inicie sesión para acceder 
+        a nuestras herramientas avanzadas y descubrir cómo podemos ayudar a optimizar su flota de transporte.
+    </p>
     <a href="{{ url_for('auth_routes.register') }}" class="btn btn-primary btn-custom">Registro</a>
     <a href="{{ url_for('auth_routes.login') }}" class="btn btn-secondary btn-custom">Iniciar Sesión</a>
 </div>
