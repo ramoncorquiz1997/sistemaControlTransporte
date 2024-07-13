@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container text-center mt-5">
     <!-- Banner de Bienvenida -->
-    <div class="jumbotron rounded">
+    <div class="jumbotron rounded-container">
         <h1 class="display-4">Bienvenido a OptiFlota</h1>
         <p class="lead">Soluciones eficientes para la gestión y operación del transporte público.</p>
         <hr class="my-4">
@@ -15,7 +15,7 @@
     <!-- Sección de Características -->
     <div class="row">
         <div class="col-md-4">
-            <div class="card rounded">
+            <div class="card rounded-container">
                 <div class="card-body">
                     <h2>Fácil de Usar</h2>
                     <p>Interfaz intuitiva que facilita la gestión diaria del transporte.</p>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card rounded">
+            <div class="card rounded-container">
                 <div class="card-body">
                     <h2>Altamente Eficiente</h2>
                     <p>Optimiza las operaciones para mejorar la eficiencia y calidad del servicio.</p>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card rounded">
+            <div class="card rounded-container">
                 <div class="card-body">
                     <h2>Seguridad y Confiabilidad</h2>
                     <p>Plataforma segura que protege los datos de sus usuarios y operaciones.</p>
@@ -42,7 +42,7 @@
 
     <!-- Testimonios de Clientes -->
     <div class="mt-5">
-        <div class="card rounded">
+        <div class="card rounded-container">
             <div class="card-body">
                 <h2>Testimonios</h2>
                 <blockquote class="blockquote text-center">
@@ -55,15 +55,15 @@
 </div>
 
 <!-- Pie de Página -->
-<footer class="footer mt-5 py-3 bg-light rounded">
+<footer class="footer mt-5 py-3">
     <div class="container text-center">
         <span class="text-muted">© 2024 OptiFlota. Todos los derechos reservados.</span>
         <br>
         <a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a>
         <br>
-        <a href="#"><img src="facebook-icon.png" alt="Facebook" style="width:24px;height:24px;"></a>
-        <a href="#"><img src="twitter-icon.png" alt="Twitter" style="width:24px;height:24px;"></a>
-        <a href="#"><img src="linkedin-icon.png" alt="LinkedIn" style="width:24px;height:24px;"></a>
+        <a href="#"><img src="{{ url_for('static', filename='facebook-icon.png') }}" alt="Facebook" style="width:24px;height:24px;"></a>
+        <a href="#"><img src="{{ url_for('static', filename='twitter-icon.png') }}" alt="Twitter" style="width:24px;height:24px;"></a>
+        <a href="#"><img src="{{ url_for('static', filename='linkedin-icon.png') }}" alt="LinkedIn" style="width:24px;height:24px;"></a>
     </div>
 </footer>
 {% endblock %}

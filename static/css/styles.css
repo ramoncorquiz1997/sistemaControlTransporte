@@ -1,0 +1,71 @@
+:root {
+    --color-fondo: #424769;
+    --color-fondo-mas-fondo: #2d3250;
+    --color-texto: #ffffff;
+    --color-relleno-textbox: #676f9d;
+    --color-boton: #f9b17a;
+}
+
+body {
+    background-color: var(--color-fondo-mas-fondo);
+    color: var(--color-texto);
+}
+
+.navbar, .login-container, .jumbotron, .card, .footer {
+    background-color: var(--color-fondo);
+}
+
+.navbar {
+    background-color: var(--color-fondo-mas-fondo);
+}
+
+.navbar-brand, .nav-link, .dropdown-item, .footer, .card-body, .jumbotron, .blockquote, .text-muted {
+    color: var(--color-texto) !important;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+    background-color: var(--color-relleno-textbox) !important;
+}
+
+.form-control {
+    background-color: var(--color-relleno-textbox);
+    color: var(--color-texto);
+    border: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-texto);
+}
+
+.btn-custom {
+    background-color: var(--color-boton);
+    color: var(--color-fondo-mas-fondo) !important;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-boton);
+    border: none;
+    color: var(--color-fondo-mas-fondo) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-relleno-textbox);
+    color: var(--color-fondo-mas-fondo) !important;
+}
+
+.card, .jumbotron {
+    border-radius: 20px;
+}
+
+.blockquote-footer, .footer a {
+    color: var(--color-texto) !important;
+}
+
+.footer {
+    background-color: var(--color-fondo-mas-fondo);
+}
+
+.rounded-container {
+    border-radius: 30px; /* Bordes más redondeados para contenedores específicos */
+}
