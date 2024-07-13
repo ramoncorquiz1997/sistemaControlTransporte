@@ -6,8 +6,8 @@ app = Flask(__name__)
 app.register_blueprint(auth_routes, url_prefix='/auth')
 
 @app.route('/')
-def home():
-    return render_template('home.html')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
