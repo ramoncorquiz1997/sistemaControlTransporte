@@ -24,10 +24,14 @@
         .dropdown-menu {
             left: 0 !important;
             right: auto !important;
-            margin-left: 0; /* Asegura que los menús se alineen a la izquierda */
         }
         .navbar-nav .dropdown:hover>.dropdown-menu {
             display: block;
+        }
+        /* Para asegurar que los submenús estén alineados a la izquierda */
+        .dropdown-menu[data-bs-popper] {
+            left: 0 !important;
+            right: auto !important;
         }
     </style>
 </head>
@@ -40,7 +44,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menú 1
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu1">
@@ -50,7 +54,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menú 2
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu2">
@@ -60,7 +64,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu3" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menú 3
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu3">
@@ -81,7 +85,7 @@
                     <a class="nav-link" href="{{ url_for('auth_routes.register') }}">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth_routes.login') }}">Iniciar Sesión</a>
+                    <a class="nav-link" href="{{ url_for('auth_routes.login') }}">Iniciar Sesióm</a>
                 </li>
             {% endif %}
         </ul>
