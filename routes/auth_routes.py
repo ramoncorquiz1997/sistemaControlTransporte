@@ -1,5 +1,4 @@
-from flask import render_template, redirect, url_for, request, Blueprint
-from app import db, User
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 
 auth_routes = Blueprint('auth_routes', __name__)
 
@@ -9,18 +8,15 @@ def register():
         firstname = request.form['firstname']
         lastname = request.form['lastname']
         email = request.form['email']
-
-        new_user = User(firstname=firstname, lastname=lastname, email=email)
-        db.session.add(new_user)
-        db.session.commit()
-
-        return redirect(url_for('auth_routes.login'))
+        
+        # Procesar datos de registro aquí, por ahora solo imprimimos
+        print(f"Nombre: {firstname}, Apellido: {lastname}, Correo: {email}")
+        
+        flash('Registro exitoso', 'success')
+        return redirect(url_for('auth_routes.register'))
     
     return render_template('register.html')
 
-@auth_routes.route('/login', methods=['GET', 'POST'])
+@auth_routes.route('/login')
 def login():
-    if request.method == 'POST':
-        return redirect(url_for('main_routes.index'))
-
     return render_template('login.html')
