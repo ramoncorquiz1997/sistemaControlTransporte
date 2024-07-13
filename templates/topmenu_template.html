@@ -28,18 +28,43 @@
         .navbar-nav .dropdown:hover>.dropdown-menu {
             display: block;
         }
+        .navbar {
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .navbar-nav {
+            flex-direction: row;
+        }
+        .nav-item {
+            padding: 0 10px;
+        }
+        .nav-link {
+            color: black !important;
+            font-weight: 300; /* Cambiar el grosor de las letras a más delgadas */
+        }
+        .btn-custom {
+            border-radius: 20px;
+            background-color: black;
+            color: white !important;
+            font-weight: 300; /* Cambiar el grosor de las letras a más delgadas */
+        }
+        .navbar-nav.mx-auto {
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{{ url_for('main_routes.home') }}">OptiFlota</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mx-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menú 1
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu1">
@@ -49,7 +74,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="menu2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Menú 2
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu2">
@@ -69,20 +94,17 @@
                 </div>
             </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('main_routes.welcome') }}">Bienvenido, {{ current_user.username }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-danger ml-2" href="{{ url_for('auth_routes.logout') }}">Cerrar Sesión</a>
+                    <a class="nav-link btn btn-danger btn-custom ml-2" href="{{ url_for('auth_routes.logout') }}">Cerrar Sesión</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth_routes.register') }}">Registro</a>
+                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes.register') }}">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth_routes.login') }}">Iniciar Sesión</a>
+                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes.login') }}">Iniciar Sesión</a>
                 </li>
             {% endif %}
         </ul>
