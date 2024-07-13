@@ -34,13 +34,13 @@
         }
         .login-container {
             padding: 2rem;
-            border-radius: 0.5rem;
+            border-radius: 20px;
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
         }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="{{ url_for('main_routes.home') }}">OptiFlota</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -75,6 +75,9 @@
                     <a class="dropdown-item" href="#">Opción 3-1</a>
                     <a class="dropdown-item" href="#">Opción 3-2</a>
                     <a class="dropdown-item" href="#">Opción 3-3</a>
+                    {% if current_user.is_authenticated and current_user.is_admin %}
+                        <a class="dropdown-item" href="{{ url_for('admin_routes.admin_dashboard') }}">Administrar Usuarios</a>
+                    {% endif %}
                 </div>
             </li>
         </ul>
