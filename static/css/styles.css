@@ -69,3 +69,9 @@ body {
 .rounded-container {
     border-radius: 30px; /* Bordes más redondeados para contenedores específicos */
 }
+
+/* CSS para los submenús desplegables al pasar el ratón */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
