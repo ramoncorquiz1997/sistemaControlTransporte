@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center" style="height: 80vh; background-color: var(--color-fondo-mas-fondo);">
-    <div class="login-container rounded-container">
+    <div class="login-container" style="background-color: var(--color-fondo);">
         <h1 class="text-center">Iniciar Sesión</h1>
         <form method="POST" action="{{ url_for('auth_routes.login') }}">
             {{ form.hidden_tag() }}

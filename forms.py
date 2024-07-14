@@ -13,7 +13,7 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('Este usuario no esta dispnible, escoge otro')
+            raise ValidationError('Este usuario no está disponible, escoge otro')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -23,5 +23,5 @@ class RegistrationForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField('Usuario', validators=[DataRequired(), Length(min=2, max=20)])
     password = PasswordField('Contraseña', validators=[DataRequired()])
-    remember = BooleanField('Recuerdame')
-    submit = SubmitField('Inicar sesion')
+    remember = BooleanField('Recuérdame')
+    submit = SubmitField('Iniciar sesión')

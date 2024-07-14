@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ url_for('main_routes.home') }}">OptiFlota</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
                 <div class="dropdown-menu" aria-labelledby="menu3">
                     <a class="dropdown-item" href="#">Opción 3-1</a>
                     <a class="dropdown-item" href="#">Opción 3-2</a>
-                    <a class="dropdown-item" href="#">Opción 3-3</a>
+                    <a class="dropdown-item" href="{{ url_for('admin_routes.admin_dashboard') }}">Opción 3-3</a>
                     {% if current_user.is_authenticated and current_user.is_admin %}
                         <a class="dropdown-item" href="{{ url_for('admin_routes.admin_dashboard') }}">Administrar Usuarios</a>
                     {% endif %}
@@ -97,6 +97,16 @@
         </ul>
     </div>
 </nav>
+
+<div class="container mt-3">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
 
 {% block content %}{% endblock %}
 

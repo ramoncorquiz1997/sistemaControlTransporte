@@ -9,8 +9,10 @@ load_dotenv()  # Cargar variables de entorno desde el archivo .env
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+
 login_manager = LoginManager(app)
 login_manager.login_view = 'auth_routes.login'
 login_manager.login_message_category = 'info'
@@ -24,10 +26,6 @@ def load_user(user_id):
 
 from routes import register_routes
 register_routes(app)
-
-@app.route('/')
-def home():
-    return render_template('index.html', show_auth_buttons=True)
 
 if __name__ == '__main__':
     app.run(debug=True)

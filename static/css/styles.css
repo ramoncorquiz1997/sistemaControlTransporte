@@ -74,4 +74,14 @@ body {
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
+    background-color: var(--color-fondo) !important; /* Cambiar el color de fondo de los submenús */
+    border: none; /* Quitar el borde */
+}
+
+.dropdown-item {
+    color: var(--color-texto) !important;
+}
+
+.dropdown-item:hover {
+    background-color: var(--color-relleno-textbox) !important;
 }
