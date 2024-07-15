@@ -9,9 +9,9 @@ admin_routes = Blueprint('admin_routes', __name__)
 @login_required
 def admin_dashboard():
     if not current_user.is_admin:
-        flash('No tienes permiso para acceder a esta página.')
+        flash('No tienes permiso para acceder a esta página.', 'danger')
         return redirect(url_for('main_routes.home'))
-    
+
     users = User.query.all()
     return render_template('admin_dashboard.html', users=users)
 
@@ -19,12 +19,12 @@ def admin_dashboard():
 @login_required
 def change_role(user_id):
     if not current_user.is_admin:
-        flash('No tienes permiso para acceder a esta página.')
+        flash('No tienes permiso para acceder a esta página.', 'danger')
         return redirect(url_for('main_routes.home'))
     
     user = User.query.get(user_id)
     if user:
         user.is_admin = not user.is_admin
         db.session.commit()
-        flash('Los permisos del usuario han sido actualizados.')
+        flash('Los permisos del usuario han sido actualizados.', 'success')
     return redirect(url_for('admin_routes.admin_dashboard'))

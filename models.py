@@ -11,3 +11,32 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
+
+class Admin(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombres = db.Column(db.String(50), nullable=False)
+    apellido_paterno = db.Column(db.String(50), nullable=False)
+    apellido_materno = db.Column(db.String(50), nullable=False)
+    fecha_nacimiento = db.Column(db.Date, nullable=False)
+    numero_telefonico = db.Column(db.String(20), nullable=False)
+
+class Unit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    modelo = db.Column(db.String(50), nullable=False)
+    ano = db.Column(db.Integer, nullable=False)
+    matricula = db.Column(db.String(20), unique=True, nullable=False)
+    dueño_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
+    dueño = db.relationship('Admin', backref=db.backref('units', lazy=True))
+
+class DailyUnitRecord(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    unit_id = db.Column(db.Integer, db.ForeignKey('unit.id'), nullable=False)
+    nombre_chofer = db.Column(db.String(100), nullable=False)
+    fecha = db.Column(db.Date, default=datetime.utcnow, nullable=False)
+    boleto_inicial = db.Column(db.String(50), nullable=False)
+    boleto_entregado = db.Column(db.String(50), nullable=False)
+    cantidad_dinero_esperado = db.Column(db.Float, nullable=False)
+    dinero_entregado = db.Column(db.Float, nullable=False)
+    restante = db.Column(db.Float, nullable=False)
+    dueño_unidad = db.Column(db.String(100), nullable=False)
+    unit = db.relationship('Unit', backref=db.backref('daily_records', lazy=True))

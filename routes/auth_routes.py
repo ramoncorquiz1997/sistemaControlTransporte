@@ -16,6 +16,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
+        print(f"Usuario registrado: {user}")  # Esto es solo para verificación en consola
         flash('Tu cuenta ha sido creada! Ahora puedes iniciar sesión', 'success')
         return redirect(url_for('auth_routes.login'))
     return render_template('register.html', form=form)
