@@ -1,5 +1,5 @@
 from app import app, db
-from models import User, Admin, Unit, DailyUnitRecord
+from models import User, Admin, Operator, Unit, DailyUnitRecord
 from sqlalchemy import text
 
 with app.app_context():
@@ -23,6 +23,13 @@ with app.app_context():
             print("La tabla 'Admin' ha sido creada.")
         else:
             print("La tabla 'Admin' no ha sido creada.")
+        
+        result_operator = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='operator';"))
+        tables_operator = result_operator.fetchall()
+        if tables_operator:
+            print("La tabla 'Operator' ha sido creada.")
+        else:
+            print("La tabla 'Operator' no ha sido creada.")
         
         result_unit = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='unit';"))
         tables_unit = result_unit.fetchall()

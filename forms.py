@@ -27,6 +27,12 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Recuérdame')
     submit = SubmitField('Iniciar sesión')
 
+# forms.py
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField, DateField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+
 class DailyUnitRecordForm(FlaskForm):
     unit_id = StringField('Número de Unidad', validators=[DataRequired()])
     nombre_chofer = StringField('Nombre del Chofer', validators=[DataRequired()])
@@ -38,3 +44,5 @@ class DailyUnitRecordForm(FlaskForm):
     restante = FloatField('Restante', validators=[DataRequired()])
     dueño_unidad = StringField('Dueño de la Unidad', validators=[DataRequired()])
     submit = SubmitField('Registrar')
+
+

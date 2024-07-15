@@ -20,6 +20,14 @@ class Admin(db.Model):
     fecha_nacimiento = db.Column(db.Date, nullable=False)
     numero_telefonico = db.Column(db.String(20), nullable=False)
 
+class Operator(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombres = db.Column(db.String(50), nullable=False)
+    apellido_paterno = db.Column(db.String(50), nullable=False)
+    apellido_materno = db.Column(db.String(50), nullable=False)
+    fecha_nacimiento = db.Column(db.Date, nullable=False)
+    numero_telefonico = db.Column(db.String(20), nullable=False)
+
 class Unit(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     modelo = db.Column(db.String(50), nullable=False)
@@ -31,6 +39,7 @@ class Unit(db.Model):
 class DailyUnitRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('unit.id'), nullable=False)
+    operador_id = db.Column(db.Integer, db.ForeignKey('operator.id'), nullable=False)
     nombre_chofer = db.Column(db.String(100), nullable=False)
     fecha = db.Column(db.Date, default=datetime.utcnow, nullable=False)
     boleto_inicial = db.Column(db.String(50), nullable=False)
@@ -40,3 +49,4 @@ class DailyUnitRecord(db.Model):
     restante = db.Column(db.Float, nullable=False)
     dueño_unidad = db.Column(db.String(100), nullable=False)
     unit = db.relationship('Unit', backref=db.backref('daily_records', lazy=True))
+    operador = db.relationship('Operator', backref=db.backref('daily_records', lazy=True))

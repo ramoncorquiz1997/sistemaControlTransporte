@@ -1,3 +1,5 @@
+# app.py
+
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -26,6 +28,10 @@ def load_user(user_id):
 
 from routes import register_routes
 register_routes(app)
+
+# Importar y registrar el blueprint al final
+from routes.register_daily_record import register_daily_record_bp
+app.register_blueprint(register_daily_record_bp, url_prefix='/daily_records')
 
 if __name__ == '__main__':
     app.run(debug=True)
