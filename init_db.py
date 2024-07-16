@@ -1,5 +1,5 @@
 from app import app, db
-from models import User, Admin, Operator, Unit, DailyUnitRecord
+from models import User, Admin, Unit, Operator, DailyUnitRecord
 from sqlalchemy import text
 
 with app.app_context():
@@ -10,13 +10,6 @@ with app.app_context():
         print("Tablas creadas exitosamente.")
         
         # Verificar si las tablas existen
-        result_user = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='user';"))
-        tables_user = result_user.fetchall()
-        if tables_user:
-            print("La tabla 'User' ha sido creada.")
-        else:
-            print("La tabla 'User' no ha sido creada.")
-        
         result_admin = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='admin';"))
         tables_admin = result_admin.fetchall()
         if tables_admin:
@@ -24,19 +17,19 @@ with app.app_context():
         else:
             print("La tabla 'Admin' no ha sido creada.")
         
-        result_operator = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='operator';"))
-        tables_operator = result_operator.fetchall()
-        if tables_operator:
-            print("La tabla 'Operator' ha sido creada.")
-        else:
-            print("La tabla 'Operator' no ha sido creada.")
-        
         result_unit = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='unit';"))
         tables_unit = result_unit.fetchall()
         if tables_unit:
             print("La tabla 'Unit' ha sido creada.")
         else:
             print("La tabla 'Unit' no ha sido creada.")
+        
+        result_operator = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='operator';"))
+        tables_operator = result_operator.fetchall()
+        if tables_operator:
+            print("La tabla 'Operator' ha sido creada.")
+        else:
+            print("La tabla 'Operator' no ha sido creada.")
         
         result_daily_unit_record = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='daily_unit_record';"))
         tables_daily_unit_record = result_daily_unit_record.fetchall()

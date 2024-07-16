@@ -1,0 +1,40 @@
+{% extends "topmenu_template.html" %}
+
+{% block title %}Listado de Administradores (Dueños){% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Listado de Administradores (Dueños)</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table class="table table-striped text-white">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombres</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Número Telefónico</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for admin in admins %}
+                <tr>
+                    <td>{{ admin.id }}</td>
+                    <td>{{ admin.nombres }}</td>
+                    <td>{{ admin.apellido_paterno }}</td>
+                    <td>{{ admin.apellido_materno }}</td>
+                    <td>{{ admin.fecha_nacimiento }}</td>
+                    <td>{{ admin.numero_telefonico }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -5,7 +5,14 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center">Administrar Usuarios</h1>
-    <table class="table table-striped text-white">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Usuario</th>

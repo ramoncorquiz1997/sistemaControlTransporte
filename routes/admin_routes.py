@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
 from flask_login import login_required, current_user
-from models import User
+from models import User, Admin
 from app import db
 
 admin_routes = Blueprint('admin_routes', __name__)
@@ -28,3 +28,9 @@ def change_role(user_id):
         db.session.commit()
         flash('Los permisos del usuario han sido actualizados.', 'success')
     return redirect(url_for('admin_routes.admin_dashboard'))
+
+@admin_routes.route('/list_admins')
+@login_required
+def list_admins():
+    admins = Admin.query.all()
+    return render_template('list_admins.html', admins=admins)

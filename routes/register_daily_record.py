@@ -6,9 +6,9 @@ from app import db
 from models import DailyUnitRecord, Unit, Admin
 from forms import DailyUnitRecordForm
 
-register_daily_record_bp = Blueprint('register_daily_record_bp', __name__)
+register_daily_record = Blueprint('register_daily_record', __name__)
 
-@register_daily_record_bp.route('/register', methods=['GET', 'POST'])
+@register_daily_record.route('/register', methods=['GET', 'POST'])
 @login_required
 def register_daily_record():
     form = DailyUnitRecordForm()
@@ -27,13 +27,13 @@ def register_daily_record():
         db.session.add(daily_record)
         db.session.commit()
         flash('Registro diario guardado con éxito', 'success')
-        return redirect(url_for('register_daily_record_bp.register_daily_record'))
+        return redirect(url_for('register_daily_record.register_daily_record'))
     return render_template('register_daily_record.html', form=form)
 
-@register_daily_record_bp.route('/get_unit_owner', methods=['POST'])
+@register_daily_record.route('/get_unit_owner', methods=['POST'])
 @login_required
 def get_unit_owner():
-    unit_id = request.form.get('unit_id')
+    unit_id = request.json.get('unit_id')
     unit = Unit.query.filter_by(id=unit_id).first()
     if unit:
         owner = Admin.query.filter_by(id=unit.dueño_id).first()

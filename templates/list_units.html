@@ -1,0 +1,31 @@
+{% extends "topmenu_template.html" %}
+
+{% block title %}Listado de Unidades{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Listado de Unidades</h1>
+    <table class="table table-striped text-white">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Matrícula</th>
+                <th>Dueño</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for unit in units %}
+                <tr>
+                    <td>{{ unit.id }}</td>
+                    <td>{{ unit.modelo }}</td>
+                    <td>{{ unit.ano }}</td>
+                    <td>{{ unit.matricula }}</td>
+                    <td>{{ unit.dueño.nombres }} {{ unit.dueño.apellido_paterno }} {{ unit.dueño.apellido_materno }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

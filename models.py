@@ -36,6 +36,7 @@ class Unit(db.Model):
     dueño_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
     dueño = db.relationship('Admin', backref=db.backref('units', lazy=True))
 
+
 class DailyUnitRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('unit.id'), nullable=False)
