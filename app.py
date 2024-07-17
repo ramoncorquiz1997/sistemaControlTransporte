@@ -30,13 +30,13 @@ from routes import register_routes
 register_routes(app)
 
 # Importar y registrar los blueprints
-from routes.register_daily_record import register_daily_record
-from routes.unit_routes import unit_routes
-from routes.admin_routes import admin_routes
+from routes.register_daily_record import register_daily_record_bp
+from routes.unit_routes import unit_routes_bp
+from routes.admin_routes import admin_routes_bp
 
-app.register_blueprint(register_daily_record, url_prefix='/daily_records')
-app.register_blueprint(unit_routes, url_prefix='/units')
-app.register_blueprint(admin_routes, url_prefix='/admin')
+app.register_blueprint(register_daily_record_bp, url_prefix='/daily_records', name='register_daily_record_bp_unique')
+app.register_blueprint(unit_routes_bp, url_prefix='/units', name='unit_routes_bp_unique')
+app.register_blueprint(admin_routes_bp, url_prefix='/admin', name='admin_routes_bp_unique')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center">Registro Diario de Unidad</h1>
-    <form method="POST" action="{{ url_for('register_daily_record.register_daily_record') }}">
+    <form method="POST" action="{{ url_for('register_daily_record_bp.create_daily_record') }}">
         {{ form.hidden_tag() }}
         <div class="form-group">
             {{ form.unit_id.label(class="form-label") }}
@@ -52,7 +52,7 @@
 <script>
     document.getElementById('unit_id').addEventListener('change', function() {
         const unitId = this.value;
-        fetch('{{ url_for("register_daily_record.get_unit_owner") }}', {
+        fetch('{{ url_for("register_daily_record_bp.get_unit_owner") }}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

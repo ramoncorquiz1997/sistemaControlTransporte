@@ -1,16 +1,14 @@
-# register_daily_record.py
-
 from flask import Blueprint, render_template, redirect, url_for, flash, jsonify, request
 from flask_login import login_required, current_user
 from app import db
-from models import DailyUnitRecord, Unit, Admin
+from models import DailyUnitRecord, Unit, Accionista
 from forms import DailyUnitRecordForm
 
-register_daily_record = Blueprint('register_daily_record', __name__)
+register_daily_record_bp = Blueprint('register_daily_record_bp', __name__)
 
-@register_daily_record.route('/register', methods=['GET', 'POST'])
+@register_daily_record_bp.route('/register', methods=['GET', 'POST'])
 @login_required
-def register_daily_record():
+def create_daily_record():
     form = DailyUnitRecordForm()
     if form.validate_on_submit():
         daily_record = DailyUnitRecord(
@@ -27,16 +25,16 @@ def register_daily_record():
         db.session.add(daily_record)
         db.session.commit()
         flash('Registro diario guardado con éxito', 'success')
-        return redirect(url_for('register_daily_record.register_daily_record'))
+        return redirect(url_for('register_daily_record_bp.create_daily_record'))
     return render_template('register_daily_record.html', form=form)
 
-@register_daily_record.route('/get_unit_owner', methods=['POST'])
+@register_daily_record_bp.route('/get_unit_owner', methods=['POST'])
 @login_required
 def get_unit_owner():
     unit_id = request.json.get('unit_id')
     unit = Unit.query.filter_by(id=unit_id).first()
     if unit:
-        owner = Admin.query.filter_by(id=unit.dueño_id).first()
+        owner = Accionista.query.filter_by(id=unit.dueño_id).first()
         if owner:
             return jsonify({'owner_name': f"{owner.nombres} {owner.apellido_paterno} {owner.apellido_materno}"})
     return jsonify({'owner_name': ''})

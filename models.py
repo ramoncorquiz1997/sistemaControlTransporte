@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
 
-class Admin(db.Model):
+class Accionista(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombres = db.Column(db.String(50), nullable=False)
     apellido_paterno = db.Column(db.String(50), nullable=False)
@@ -33,9 +33,8 @@ class Unit(db.Model):
     modelo = db.Column(db.String(50), nullable=False)
     ano = db.Column(db.Integer, nullable=False)
     matricula = db.Column(db.String(20), unique=True, nullable=False)
-    dueño_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
-    dueño = db.relationship('Admin', backref=db.backref('units', lazy=True))
-
+    dueño_id = db.Column(db.Integer, db.ForeignKey('accionista.id'), nullable=False)
+    dueño = db.relationship('Accionista', backref=db.backref('units', lazy=True))
 
 class DailyUnitRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
