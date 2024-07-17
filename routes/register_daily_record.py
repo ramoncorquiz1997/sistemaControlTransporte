@@ -11,21 +11,28 @@ register_daily_record_bp = Blueprint('register_daily_record_bp', __name__)
 def create_daily_record():
     form = DailyUnitRecordForm()
     if form.validate_on_submit():
-        daily_record = DailyUnitRecord(
-            unit_id=form.unit_id.data,
-            nombre_chofer=form.nombre_chofer.data,
-            fecha=form.fecha.data,
-            boleto_inicial=form.boleto_inicial.data,
-            boleto_entregado=form.boleto_entregado.data,
-            cantidad_dinero_esperado=form.cantidad_dinero_esperado.data,
-            dinero_entregado=form.dinero_entregado.data,
-            restante=form.restante.data,
-            dueño_unidad=form.dueño_unidad.data
-        )
-        db.session.add(daily_record)
-        db.session.commit()
-        flash('Registro diario guardado con éxito', 'success')
+        try:
+            daily_record = DailyUnitRecord(
+                unit_id=form.unit_id.data,
+                nombre_chofer=form.nombre_chofer.data,
+                fecha=form.fecha.data,
+                boleto_inicial=form.boleto_inicial.data,
+                boleto_entregado=form.boleto_entregado.data,
+                cantidad_dinero_esperado=form.cantidad_dinero_esperado.data,
+                dinero_entregado=form.dinero_entregado.data,
+                restante=form.restante.data,
+                dueño_unidad=form.dueño_unidad.data
+            )
+            db.session.add(daily_record)
+            db.session.commit()
+            flash('Registro diario guardado con éxito', 'success')
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Error al guardar el registro: {e}', 'danger')
         return redirect(url_for('register_daily_record_bp.create_daily_record'))
+    else:
+        if request.method == 'POST':
+            flash('Error al validar el formulario. Por favor revisa los datos ingresados.', 'danger')
     return render_template('register_daily_record.html', form=form)
 
 @register_daily_record_bp.route('/get_unit_owner', methods=['POST'])

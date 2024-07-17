@@ -10,7 +10,7 @@ admin_routes_bp = Blueprint('admin_routes_bp', __name__)
 def admin_dashboard():
     if not current_user.is_admin:
         flash('No tienes permiso para acceder a esta página.', 'danger')
-        return redirect(url_for('main_routes.home'))
+        return redirect(url_for('main_routes_bp.home'))
 
     users = User.query.all()
     return render_template('admin_dashboard.html', users=users)
@@ -20,7 +20,7 @@ def admin_dashboard():
 def change_role(user_id):
     if not current_user.is_admin:
         flash('No tienes permiso para acceder a esta página.', 'danger')
-        return redirect(url_for('main_routes.home'))
+        return redirect(url_for('main_routes_bp.home'))
     
     user = User.query.get(user_id)
     if user:

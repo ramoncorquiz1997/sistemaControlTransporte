@@ -41,7 +41,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="{{ url_for('main_routes.home') }}">OptiFlota</a>
+    <a class="navbar-brand" href="{{ url_for('main_routes_bp.home') }}">OptiFlota</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,7 +52,7 @@
                     Menú 1
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu1">
-                    <a class="dropdown-item" href="{{ url_for('register_daily_record.register_daily_record') }}">Registrar Unidad</a>
+                    <a class="dropdown-item" href="{{ url_for('register_daily_record_bp.create_daily_record') }}">Registrar Unidad</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -60,8 +60,8 @@
                     Menú 2
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu2">
-                    <a class="dropdown-item" href="{{ url_for('unit_routes.list_units') }}">Listado de Unidades</a>
-                    <a class="dropdown-item" href="{{ url_for('admin_routes.list_admins') }}">Opción 2-2: Listado de Administradores (Dueños)</a>
+                    <a class="dropdown-item" href="{{ url_for('unit_routes_bp.list_units') }}">Listado de Unidades</a>
+                    <a class="dropdown-item" href="{{ url_for('admin_routes_bp.list_accionistas') }}">Opción 2-2: Listado de Administradores (Dueños)</a>
 
                 </div>
             </li>
@@ -74,7 +74,7 @@
                     <a class="dropdown-item" href="#">Opción 3-2</a>
                     <a class="dropdown-item" href="#">Opción 3-3</a>
                     {% if current_user.is_authenticated and current_user.is_admin %}
-                        <a class="dropdown-item" href="{{ url_for('admin_routes.admin_dashboard') }}">Administrar Usuarios</a>
+                        <a class="dropdown-item" href="{{ url_for('admin_routes_bp.admin_dashboard') }}">Administrar Usuarios</a>
                     {% endif %}
                 </div>
             </li>
@@ -82,14 +82,14 @@
         <ul class="navbar-nav">
             {% if current_user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-danger btn-custom ml-2" href="{{ url_for('auth_routes.logout') }}">Cerrar Sesión</a>
+                    <a class="nav-link btn btn-danger btn-custom ml-2" href="{{ url_for('auth_routes_bp.logout') }}">Cerrar Sesión</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes.register') }}">Registro</a>
+                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes_bp.register') }}">Registro</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes.login') }}">Iniciar Sesión</a>
+                    <a class="nav-link btn btn-primary btn-custom ml-2" href="{{ url_for('auth_routes_bp.login') }}">Iniciar Sesión</a>
                 </li>
             {% endif %}
         </ul>

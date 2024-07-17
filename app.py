@@ -16,7 +16,7 @@ bcrypt = Bcrypt(app)
 csrf = CSRFProtect(app)  # Añadir protección CSRF
 
 login_manager = LoginManager(app)
-login_manager.login_view = 'auth_routes.login'
+login_manager.login_view = 'auth_routes_bp.login'
 login_manager.login_message_category = 'info'
 
 # Importar el modelo de usuario
@@ -34,9 +34,15 @@ from routes.register_daily_record import register_daily_record_bp
 from routes.unit_routes import unit_routes_bp
 from routes.admin_routes import admin_routes_bp
 
-app.register_blueprint(register_daily_record_bp, url_prefix='/daily_records', name='register_daily_record_bp_unique')
-app.register_blueprint(unit_routes_bp, url_prefix='/units', name='unit_routes_bp_unique')
-app.register_blueprint(admin_routes_bp, url_prefix='/admin', name='admin_routes_bp_unique')
+# Verificar si el blueprint ya está registrado antes de registrarlo
+if 'register_daily_record_bp' not in app.blueprints:
+    app.register_blueprint(register_daily_record_bp, url_prefix='/daily_records')
+
+if 'unit_routes_bp' not in app.blueprints:
+    app.register_blueprint(unit_routes_bp, url_prefix='/units')
+
+if 'admin_routes_bp' not in app.blueprints:
+    app.register_blueprint(admin_routes_bp, url_prefix='/admin')
 
 if __name__ == '__main__':
     app.run(debug=True)

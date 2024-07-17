@@ -1,5 +1,5 @@
 from app import app, db
-from models import User, Admin, Unit, Operator, DailyUnitRecord
+from models import User, Accionista, Unit, Operator, DailyUnitRecord
 from sqlalchemy import text
 
 with app.app_context():
@@ -10,12 +10,12 @@ with app.app_context():
         print("Tablas creadas exitosamente.")
         
         # Verificar si las tablas existen
-        result_admin = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='admin';"))
-        tables_admin = result_admin.fetchall()
-        if tables_admin:
-            print("La tabla 'Admin' ha sido creada.")
+        result_accionista = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='accionista';"))
+        tables_accionista = result_accionista.fetchall()
+        if tables_accionista:
+            print("La tabla 'Accionista' ha sido creada.")
         else:
-            print("La tabla 'Admin' no ha sido creada.")
+            print("La tabla 'Accionista' no ha sido creada.")
         
         result_unit = db.session.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='unit';"))
         tables_unit = result_unit.fetchall()
