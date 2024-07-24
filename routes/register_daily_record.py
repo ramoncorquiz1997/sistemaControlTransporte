@@ -26,13 +26,20 @@ def create_daily_record():
             db.session.add(daily_record)
             db.session.commit()
             flash('Registro diario guardado con éxito', 'success')
+            print('Registro diario guardado con éxito')
         except Exception as e:
             db.session.rollback()
             flash(f'Error al guardar el registro: {e}', 'danger')
+            print(f"Error al guardar el registro: {e}")
         return redirect(url_for('register_daily_record_bp.create_daily_record'))
     else:
         if request.method == 'POST':
             flash('Error al validar el formulario. Por favor revisa los datos ingresados.', 'danger')
+            print('Error al validar el formulario')
+            for field, errors in form.errors.items():
+                for error in errors:
+                    flash(f'Error en el campo {getattr(form, field).label.text}: {error}', 'danger')
+                    print(f"Error en el campo {getattr(form, field).label.text}: {error}")
     return render_template('register_daily_record.html', form=form)
 
 @register_daily_record_bp.route('/get_unit_owner', methods=['POST'])

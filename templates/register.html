@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: var(--color-fondo-mas-fondo);">
     <div class="login-container" style="background-color: var(--color-fondo);">
         <h1 class="text-center">Registro</h1>
-        <form method="POST" action="{{ url_for('auth_routes.register') }}">
+        <form method="POST" action="{{ url_for('auth_routes_bp.register') }}">
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.username.label(class="form-label") }}

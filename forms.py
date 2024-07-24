@@ -45,4 +45,12 @@ class DailyUnitRecordForm(FlaskForm):
     dueño_unidad = StringField('Dueño de la Unidad', validators=[DataRequired()])
     submit = SubmitField('Registrar')
 
+class EditOwnerForm(FlaskForm):
+    nombres = StringField('Nombres', validators=[DataRequired()])
+    apellido_paterno = StringField('Apellido Paterno', validators=[DataRequired()])
+    apellido_materno = StringField('Apellido Materno', validators=[DataRequired()])
+    fecha_nacimiento = DateField('Fecha de Nacimiento', format='%Y-%m-%d', validators=[DataRequired()])
+    numero_telefonico = StringField('Número Telefónico', validators=[DataRequired()])
+    submit = SubmitField('Actualizar')
+
 
