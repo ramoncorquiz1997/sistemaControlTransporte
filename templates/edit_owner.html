@@ -1,10 +1,10 @@
 {% extends "topmenu_template.html" %}
 
-{% block title %}Editar Dueño{% endblock %}
+{% block title %}Editar Accionista{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">Editar Perfil del Dueño</h1>
+    <h1 class="text-center">Editar Perfil del Accionista</h1>
     <form method="POST" action="{{ url_for('edit_owner_bp.edit_owner', owner_id=owner.id) }}">
         {{ form.hidden_tag() }}
         <div class="form-group">

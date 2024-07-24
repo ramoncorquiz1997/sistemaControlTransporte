@@ -33,6 +33,8 @@ register_routes(app)
 from routes.register_daily_record import register_daily_record_bp
 from routes.unit_routes import unit_routes_bp
 from routes.admin_routes import admin_routes_bp
+from routes.list_daily_records import list_daily_records_bp
+from routes.edit_owner import edit_owner_bp
 
 # Verificar si el blueprint ya está registrado antes de registrarlo
 if 'register_daily_record_bp' not in app.blueprints:
@@ -43,6 +45,12 @@ if 'unit_routes_bp' not in app.blueprints:
 
 if 'admin_routes_bp' not in app.blueprints:
     app.register_blueprint(admin_routes_bp, url_prefix='/admin')
+
+if 'list_daily_records_bp' not in app.blueprints:
+    app.register_blueprint(list_daily_records_bp, url_prefix='/list')
+
+if 'edit_owner_bp' not in app.blueprints:
+    app.register_blueprint(edit_owner_bp, url_prefix='/owners')
 
 if __name__ == '__main__':
     app.run(debug=True)

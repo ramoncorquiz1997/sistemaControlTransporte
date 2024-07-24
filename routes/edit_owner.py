@@ -21,8 +21,8 @@ def edit_owner(owner_id):
         
         try:
             db.session.commit()
-            flash('Los datos del dueño han sido actualizados.', 'success')
-            return redirect(url_for('admin_routes_bp.list_owners'))
+            flash('Los datos del accionista han sido actualizados.', 'success')
+            return redirect(url_for('admin_routes_bp.list_accionistas'))
         except Exception as e:
             db.session.rollback()
             flash(f'Error al actualizar los datos: {e}', 'danger')

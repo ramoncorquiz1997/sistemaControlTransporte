@@ -1,0 +1,48 @@
+{% extends "topmenu_template.html" %}
+
+{% block title %}Listado de Registros Diarios{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Listado de Registros Diarios de Unidades</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table class="table table-striped text-white">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Número de Unidad</th>
+                <th>Nombre del Chofer</th>
+                <th>Fecha</th>
+                <th>Boleto Inicial</th>
+                <th>Boleto Entregado</th>
+                <th>Cantidad de Dinero Esperado</th>
+                <th>Dinero Entregado</th>
+                <th>Restante</th>
+                <th>Dueño de la Unidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in daily_records %}
+                <tr>
+                    <td>{{ record.id }}</td>
+                    <td>{{ record.unit_id }}</td>
+                    <td>{{ record.nombre_chofer }}</td>
+                    <td>{{ record.fecha }}</td>
+                    <td>{{ record.boleto_inicial }}</td>
+                    <td>{{ record.boleto_entregado }}</td>
+                    <td>{{ record.cantidad_dinero_esperado }}</td>
+                    <td>{{ record.dinero_entregado }}</td>
+                    <td>{{ record.restante }}</td>
+                    <td>{{ record.dueño_unidad }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
