@@ -4,20 +4,13 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">Listado de Registros Diarios de Unidades</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+    <h1 class="text-center">Listado de Registros Diarios</h1>
     <table class="table table-striped text-white">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Número de Unidad</th>
-                <th>Nombre del Chofer</th>
+                <th>Operador</th>
                 <th>Fecha</th>
                 <th>Boleto Inicial</th>
                 <th>Boleto Entregado</th>
@@ -28,11 +21,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for record in daily_records %}
+            {% for record in records %}
                 <tr>
                     <td>{{ record.id }}</td>
                     <td>{{ record.unit_id }}</td>
-                    <td>{{ record.nombre_chofer }}</td>
+                    <td>{{ record.operador.nombres }} {{ record.operador.apellido_paterno }} {{ record.operador.apellido_materno }}</td>
                     <td>{{ record.fecha }}</td>
                     <td>{{ record.boleto_inicial }}</td>
                     <td>{{ record.boleto_entregado }}</td>

@@ -6,6 +6,17 @@
     --color-boton: #f9b17a;
 }
 
+
+.color-fondo {
+    background-color: #f8f9fa; /* Ajusta esto al color de fondo deseado */
+    color: #000; /* Color del texto */
+}
+
+.dropdown-menu.color-fondo a {
+    color: #000 !important; /* Color del texto en los elementos del menú desplegable */
+    background-color: #f8f9fa !important; /* Color de fondo de los elementos del menú desplegable */
+}
+
 body {
     background-color: var(--color-fondo-mas-fondo);
     color: var(--color-texto);

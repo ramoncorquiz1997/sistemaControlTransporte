@@ -35,6 +35,7 @@ from routes.unit_routes import unit_routes_bp
 from routes.admin_routes import admin_routes_bp
 from routes.list_daily_records import list_daily_records_bp
 from routes.edit_owner import edit_owner_bp
+from routes.operator_routes import operator_routes_bp  # Importar el nuevo blueprint
 
 # Verificar si el blueprint ya está registrado antes de registrarlo
 if 'register_daily_record_bp' not in app.blueprints:
@@ -51,6 +52,9 @@ if 'list_daily_records_bp' not in app.blueprints:
 
 if 'edit_owner_bp' not in app.blueprints:
     app.register_blueprint(edit_owner_bp, url_prefix='/owners')
+
+if 'operator_routes_bp' not in app.blueprints:
+    app.register_blueprint(operator_routes_bp, url_prefix='/operators')  # Registrar el nuevo blueprint
 
 if __name__ == '__main__':
     app.run(debug=True)

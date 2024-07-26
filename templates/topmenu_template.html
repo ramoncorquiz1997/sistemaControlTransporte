@@ -62,8 +62,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu2">
                     <a class="dropdown-item" href="{{ url_for('unit_routes_bp.list_units') }}">Listado de Unidades</a>
-                    <a class="dropdown-item" href="{{ url_for('admin_routes_bp.list_accionistas') }}">Opción 2-2: Listado de Administradores (Dueños)</a>
-
+                    <a class="dropdown-item" href="{{ url_for('admin_routes_bp.list_accionistas') }}">Listado de Administradores (Dueños)</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -71,9 +70,7 @@
                     Menú 3
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menu3">
-                    <a class="dropdown-item" href="#">Opción 3-1</a>
-                    <a class="dropdown-item" href="#">Opción 3-2</a>
-                    <a class="dropdown-item" href="#">Opción 3-3</a>
+                    <a class="dropdown-item" href="{{ url_for('operator_routes_bp.list_operators') }}">Listado de Operadores</a>
                     {% if current_user.is_authenticated and current_user.is_admin %}
                         <a class="dropdown-item" href="{{ url_for('admin_routes_bp.admin_dashboard') }}">Administrar Usuarios</a>
                     {% endif %}

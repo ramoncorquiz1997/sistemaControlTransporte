@@ -1,6 +1,9 @@
 from datetime import datetime
 from app import db
 from flask_login import UserMixin
+from flask_wtf import FlaskForm
+from wtforms import StringField, FloatField, DateField, SubmitField
+from wtforms.validators import DataRequired
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,7 +38,6 @@ class Unit(db.Model):
     matricula = db.Column(db.String(20), unique=True, nullable=False)
     dueño_id = db.Column(db.Integer, db.ForeignKey('accionista.id'), nullable=False)
     dueño = db.relationship('Accionista', backref=db.backref('units', lazy=True))
-
 class DailyUnitRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     unit_id = db.Column(db.Integer, db.ForeignKey('unit.id'), nullable=False)
@@ -48,5 +50,7 @@ class DailyUnitRecord(db.Model):
     dinero_entregado = db.Column(db.Float, nullable=False)
     restante = db.Column(db.Float, nullable=False)
     dueño_unidad = db.Column(db.String(100), nullable=False)
+    
     unit = db.relationship('Unit', backref=db.backref('daily_records', lazy=True))
     operador = db.relationship('Operator', backref=db.backref('daily_records', lazy=True))
+

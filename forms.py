@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField, DateField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FloatField, DateField, HiddenField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from models import User
 
@@ -35,7 +35,8 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 
 class DailyUnitRecordForm(FlaskForm):
     unit_id = StringField('Número de Unidad', validators=[DataRequired()])
-    nombre_chofer = StringField('Nombre del Chofer', validators=[DataRequired()])
+    operador_nombre = StringField('Nombre del Operador', validators=[DataRequired()])
+    operador_id = HiddenField('ID del Operador', validators=[DataRequired()])
     fecha = DateField('Fecha', format='%Y-%m-%d', validators=[DataRequired()])
     boleto_inicial = StringField('Boleto Inicial', validators=[DataRequired()])
     boleto_entregado = StringField('Boleto Entregado', validators=[DataRequired()])
@@ -45,11 +46,20 @@ class DailyUnitRecordForm(FlaskForm):
     dueño_unidad = StringField('Dueño de la Unidad', validators=[DataRequired()])
     submit = SubmitField('Registrar')
 
+
 class EditOwnerForm(FlaskForm):
     nombres = StringField('Nombres', validators=[DataRequired()])
     apellido_paterno = StringField('Apellido Paterno', validators=[DataRequired()])
     apellido_materno = StringField('Apellido Materno', validators=[DataRequired()])
     fecha_nacimiento = DateField('Fecha de Nacimiento', format='%Y-%m-%d', validators=[DataRequired()])
+    numero_telefonico = StringField('Número Telefónico', validators=[DataRequired()])
+    submit = SubmitField('Actualizar')
+
+class OperatorForm(FlaskForm):
+    nombres = StringField('Nombres', validators=[DataRequired()])
+    apellido_paterno = StringField('Apellido Paterno', validators=[DataRequired()])
+    apellido_materno = StringField('Apellido Materno', validators=[DataRequired()])
+    fecha_nacimiento = DateField('Fecha de Nacimiento', validators=[DataRequired()], format='%Y-%m-%d')
     numero_telefonico = StringField('Número Telefónico', validators=[DataRequired()])
     submit = SubmitField('Actualizar')
 
