@@ -23,3 +23,21 @@ def edit_operator(operator_id):
         flash('Datos del operador actualizados correctamente', 'success')
         return redirect(url_for('operator_routes_bp.list_operators'))
     return render_template('edit_operator.html', form=form, operator=operator)
+
+@operator_routes_bp.route('/create_operator', methods=['GET', 'POST'])
+@login_required
+def create_operator():
+    form = OperatorForm()
+    if form.validate_on_submit():
+        new_operator = Operator(
+            nombres=form.nombres.data,
+            apellido_paterno=form.apellido_paterno.data,
+            apellido_materno=form.apellido_materno.data,
+            fecha_nacimiento=form.fecha_nacimiento.data,
+            numero_telefonico=form.numero_telefonico.data
+        )
+        db.session.add(new_operator)
+        db.session.commit()
+        flash('Nuevo operador creado correctamente', 'success')
+        return redirect(url_for('operator_routes_bp.list_operators'))
+    return render_template('create_operator.html', form=form)
